@@ -1,0 +1,440 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  outline: 0;
+  box-sizing: border-box;
+  text-decoration: none;
+  list-style: none;
+  border: none;
+}
+:root {
+  --color-dark: hsl(252, 30%, 17%);
+  --color-white: hsl(252, 30%, 100%);
+  --color-light: hsl(252, 30%, 95%);
+  --color-gray: hsl(252, 15%, 65%);
+  --color-primary: hsl(252, 75%, 60%);
+  --color-secondary: hsl(252, 100%, 90%);
+  --color-success: hsl(120, 95%, 65%);
+  --color-danger: hsl(0, 95%, 65%);
+  --color-black: hsl(252, 30%, 10%);
+
+  --border-radius: 2rem;
+  --card-border-radius: 1rem;
+  --btn-padding: 0.6rem 2rem;
+  --search-padding: 0.6rem 1rem;
+  --card-padding: 1rem;
+
+  --sticky-top-left: 5.4rem;
+  --sticky-top-right: -18rem;
+}
+
+body {
+  font-family: "Poppins", "sans-serif";
+  color: var(--color-dark);
+  background-color: var(--color-light);
+  /*overflow-x: hidden;*/
+}
+
+.container {
+  width: 90%;
+  margin: 0 auto;
+}
+
+.profile-picture {
+  width: 3rem;
+  aspect-ratio: 1/1; /*perfect square*/
+  border-radius: 50px;
+  overflow: hidden;
+}
+.profile-picture:hover {
+  opacity: 0.7;
+}
+
+img {
+  display: block;
+  width: 100%;
+}
+.btn {
+  display: inline-block;
+  padding: var(--btn-padding);
+  font-weight: 400;
+  border-radius: var(--border-radius);
+  cursor: pointer;
+  transition: all 300ms ease;
+  font-size: 0.9rem;
+}
+
+.btn:hover {
+  opacity: 1rem;
+}
+
+.btn-primary {
+  background-color: var(--color-primary);
+  color: white;
+}
+
+.text-bold {
+  font-weight: 500;
+}
+
+.text-muted {
+  /*--text-grey*/
+  color: var(--color-gray);
+}
+
+/*                  NAV BAR  SETTINGS           */
+
+.nav {
+  width: 100%;
+  background: var(--color-white);
+  padding: 0.7rem 0;
+  position: fixed;
+  z-index: 10;
+}
+
+nav .container {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+.logo-img {
+  margin-right: 10px;
+  width: 90px;
+  height: auto; /*logo img*/
+}
+
+.logo {
+  margin-right: 0px; /*connectify logo */
+}
+
+nav .search-bar {
+  background: var(--color-white);
+  border-radius: var(--border-radius);
+  padding: var(--search-padding);
+}
+
+nav .search-bar input[type="search"] {
+  background: transparent;
+  width: 30vw;
+  margin-left: 1rem;
+  font-size: 0.9rem;
+  color: var(--color-dark); /*text color*/
+}
+
+nav .search-bar input[type="search"]::placeholder {
+  color: var(--color-gray);
+}
+
+nav .add-post {
+  /*add-post */
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+/* ----------Main body css styling------------------*/
+
+main {
+  position: relative;
+  top: 6rem;
+}
+
+.main-container {
+  display: grid;
+  grid-template-columns: 18vw auto 20vw;
+  column-gap: 2rem;
+  position: relative;
+}
+
+/*-----------Start of the main left----------------*/
+.main_left {
+  position: sticky;
+  height: max-content;
+  top: 5.4rem;
+}
+
+.main_left .profile {
+  background: var(--color-white);
+  padding: var(--card-padding);
+  border-radius: var(--card-border-radius);
+  width: 100%;
+  gap: 1rem;
+  display: flex;
+  align-items: center;
+}
+
+/*----------------Side bar settings---------*/
+
+aside {
+  margin-top: 1rem;
+  border-radius: var(--card-border-radius);
+}
+
+aside .menu-item {
+  display: flex;
+  align-items: center;
+  height: 4rem;
+  cursor: pointer;
+  transition: 300ms ease all;
+  background: var(--color-white);
+  position: relative;
+}
+
+aside .menu-item:hover {
+  background: var(--color-light);
+}
+
+aside .menu-item span img {
+  width: 1.8rem;
+  margin-left: 2rem;
+  position: relative;
+}
+
+aside .msg-counter {
+  background: var(--color-danger);
+  color: white;
+  width: fit-content;
+  border-radius: 30%;
+  padding: 0.1rem 0.4rem;
+  position: absolute;
+  top: 0.7rem;
+  right: 3.2rem;
+}
+
+aside .menu-item h3 {
+  margin-left: 1.5rem;
+  font-size: 1rem;
+}
+
+aside .active {
+  background: var(--color-light);
+}
+
+aside .active h3 {
+  color: var(--color-primary);
+}
+
+aside .active::before {
+  content: "";
+  display: block;
+  width: 0.5rem;
+  height: 100%;
+  background: var(--color-primary);
+}
+aside .menu-item:nth-child(1) {
+  overflow: hidden;
+  border-top-left-radius: var(--card-border-radius);
+  border-top-right-radius: var(--card-border-radius);
+}
+aside .menu-item:nth-last-child(2) {
+  overflow: hidden;
+  border-bottom-left-radius: var(--card-border-radius);
+  border-bottom-right-radius: var(--card-border-radius);
+}
+
+.btn-lg {
+  padding: 1rem 0;
+  width: 100%;
+  text-align: center;
+  margin-top: 2rem;
+}
+.btn-lg:hover {
+  opacity: 3rem;
+}
+
+/* POST COLUMN CSS*/
+.Post_Switch {
+  display: none;
+  position: relative;
+  /* background-color: red; */
+  width: 800px;
+  height: auto;
+  left: 350px;
+  bottom: 400px;
+  margin-bottom: 50px;
+  .Home_Post_Img {
+    display: none;
+    position: relative;
+    background-color: white;
+    border-radius: 25px;
+    box-shadow: 0px 3px 10px 1px rgba(0, 0, 0);
+    width: 95%;
+    height: 600px;
+    left: 2px;
+    top: 113px;
+    margin-bottom: 10px;
+    .Post_Image {
+      width: 45%;
+      height: 75%;
+      position: absolute;
+      right: 25%;
+      top: 10%;
+    }
+    button {
+      font-family: "Poppins";
+      font-weight: 550;
+      text-align: center;
+      position: relative;
+      color: white;
+      background-color: hsl(252, 60%, 67%);
+      width: 20%;
+      height: 8%;
+      top: 90%;
+      left: 25%;
+      border-radius: 25px;
+      padding: 0.6rem 1rem;
+      margin-left: 2px;
+    }
+    .post_date {
+      color: darkgray;
+      font-size: 12px;
+      position: absolute;
+      font-family: "Poppins";
+      top: 25%;
+      left: 3%;
+    }
+    .post_profile_img {
+      position: absolute;
+      width: 110px;
+      height: 110px;
+      border-radius: 50px;
+      left: 10px;
+      top: 2%;
+    }
+
+    .post_user {
+      color: black;
+      font-size: 15px;
+      position: absolute;
+      font-family: "Poppins";
+      top: 20%;
+      left: 3%;
+    }
+  }
+  .Home_Post_Text {
+    display: none;
+    position: relative;
+    background-color: white;
+    border-radius: 25px;
+    box-shadow: 0px 3px 10px 1px rgba(0, 0, 0);
+    width: 100%;
+    height: 250px;
+    left: 2px;
+    top: 113px;
+    margin-bottom: 10px;
+    p {
+      position: absolute;
+      font-family: "Poppins";
+      font-size: 25px;
+      left: 3%;
+      top: 35%;
+    }
+    button {
+      font-family: "Poppins";
+      font-weight: 500;
+      font-size: 11px;
+      text-align: center;
+      position: relative;
+      color: white;
+      background-color: hsl(252, 60%, 67%);
+      width: 25%;
+      height: 15%;
+      top: 83%;
+      left: 5%;
+      border-radius: 10px;
+      margin-left: 3%;
+      padding: auto;
+    }
+    .post_date {
+      color: darkgray;
+      font-size: 12px;
+      position: absolute;
+      font-family: "Poppins";
+      top: 19%;
+      left: 10%;
+    }
+    .post_profile_img {
+      position: absolute;
+      width: 75px;
+      height: 75px;
+      border-radius: 50px;
+      left: 0.3%;
+      top: 2%;
+    }
+
+    .post_user {
+      color: black;
+      font-size: 15px;
+      position: absolute;
+      font-family: "Poppins";
+      top: 10%;
+      left: 10%;
+    }
+  }
+}
+
+.main-right {
+  display: grid;
+  grid-template-columns: 1fr; /* Adjust the number of columns as needed */
+  gap: 1rem;
+  justify-content: end;
+  height: max-content;
+  position: sticky;
+  top: -18rem;
+  bottom: 0;
+}
+
+.Friends {
+  background: var(--color-white);
+  border-radius: var(--card-border-radius);
+  padding: var(--card-padding);
+}
+
+.Friends-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: 1rem;
+  margin-bottom: 1rem;
+}
+
+.Friends i {
+  font-size: 1.4rem;
+}
+
+.Friend-search-bar {
+  display: flex;
+  background: var(--color-light);
+  border-radius: 2rem;
+  padding: var(--card-padding);
+  gap: 0.5rem;
+}
+
+.Friend-search-bar input[type="search"] {
+  background: transparent;
+  font-size: 0.9rem;
+  color: var(--color-dark);
+  margin-bottom: 1rem;
+}
+
+.Friends-categories {
+  display: flex;
+  margin-bottom: 1rem;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.Friends-categories h6 {
+  font-weight: bold;
+  width: 100%;
+  font-size: 0.85rem;
+  border-bottom: 2px solid var(--color-primary); /* Changed */
+  text-align: center;
+}
+
+.Friends-categories .active {
+  border-color: 2px solid var(--color-primary);
+}

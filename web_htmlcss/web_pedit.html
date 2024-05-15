@@ -1,0 +1,66 @@
+<!DOCTYPE html
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/web_htmlcss/web_pedit.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <link rel="icon" type="image/png" href="/web_files/web_images/connectifylogo.jpg">
+  <title>New User Profile</title>
+</head>
+<body>
+
+<div class="new-user-container">
+  <h2>Editing Page</h2>
+<form method="POST" action="./submit_profile_edit" enctype="multipart/form-data">
+  <div class="profile-form">
+    <h3><i class="profile-pic"></i> Upload Profile Picture </h3>
+    <div>
+      <input type="file" accept="image/*" id="profile-image-upload" name="profile-image-upload">
+    </div>
+  </div>
+  <div class="profile-form">
+    <h3><i class="profile-intro"></i> Add Introduction </h3>
+    <textarea rows="2" placeholder="Write your introduction..." id="introduction" name="introduction"></textarea>
+  </div>
+  <div class="profile-form">
+    <h3><i class="post-intro"></i> Create Your Post </h3>
+    <input type="radio" name="post-type_text" id="text-post" checked>
+    <label for="text-post">Text</label>
+    <input type="radio" name="post-type_img" id="image-post">
+    <label for="image-post">Image</label>
+    <textarea rows="2" placeholder="Write your post..." id="new_post" name="new_post"></textarea>
+    <input type="file" accept="image/*" id="post-image-upload" name="post-image-upload" style="display: none;">
+  </div>
+  <script>
+  
+    const textPost = document.getElementById('text-post');
+    const imagePost = document.getElementById('image-post');
+    const postImageUpload = document.getElementById('post-image-upload');
+    const newPostTextarea = document.getElementById('new_post');
+  
+    textPost.addEventListener('change', () => {
+      if (textPost.checked) {
+          imagePost.checked=false;
+        newPostTextarea.style.display = 'block';
+        postImageUpload.style.display = 'none';
+      }
+    });
+  
+    imagePost.addEventListener('change', () => {
+      if (imagePost.checked) {
+          textPost.checked=false;
+        newPostTextarea.style.display = 'none';
+        postImageUpload.style.display = 'block';
+      }
+    });
+  </script>
+  <div class="profile-form">
+    <button class="btn btn-primary" type="submit">Save Profile</button>
+  </div>
+</div>
+</form>
+
+
+</body>
+</html>

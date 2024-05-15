@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/web_htmlcss/web_login.css" />
+    <title>Connectify</title>
+    <link rel="icon" type="image/png" href="/web_files/web_images/connectifylogo.jpg">
+  </head>
+  <body>
+    <header>
+      <h2 class="logo">Connectify</h2>
+      <nav class="navigation">
+        <button type="button" class="Btnlogin-popup">Login</button>
+      </nav>
+    </header>
+    <div class="wrapper">
+      <span class="icon-close"><ion-icon name="close"></ion-icon></span>
+      <div class="form-box Login">
+        <h2>Login</h2>
+        <form method="POST" action="./Login_Check"> <!--Login Forms-->
+          <div class="input-box">
+            <span class="icon"><ion-icon name="mail"></ion-icon></span>
+            <input type="email" required name="email" id="email"/>
+            <label for="">Email</label>
+          </div>
+          <div class="input-box">
+            <span class="icon"><ion-icon name="lock-closed"></ion-icon></span>
+            <input type="password" required name="password" id="password" />
+            <label for="">Password</label>
+          </div>
+          <button type="submit" class="btn">login</button>
+          <div class="login-register">
+            <p>Don't have an account? <a href="#" class="register-link">Sign Up!</a>
+            </p>
+          </div>
+        </form>
+      </div>
+
+      <div class="form-box Registeration">
+        <h2>Registeration</h2>
+        <form method="Post" action="./register_submission"> <!--Register Form-->
+          <div class="input-box">
+            <span class="icon"><ion-icon name="person"></ion-icon></span>
+            <input type="text" required id=="username" name="username" />
+            <label for="">UserName</label>
+          </div>
+          <div class="input-box">
+            <span class="icon"><ion-icon name="mail"></ion-icon></span>
+            <input type="email" required name="email" id="email"/>
+            <label for="">Email</label>
+          </div>
+          <div class="input-box">
+            <span class="icon"><ion-icon name="lock-closed"></ion-icon></span>
+            <input type="password" required name="password" id="password" />
+            <label for="">Password</label>
+          </div>
+          <button type="submit" class="btn">Register</button>
+          <div class="login-register">
+            <p>Already have an account? <a href="#" class="login-link">Sign In!</a></p>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <script src="/web_scripts/web_login_animations.js"></script>
+
+    <script
+      type="module"
+      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"
+    ></script>
+    <script
+      nomodule
+      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"
+    ></script>
+  </body>
+</html>

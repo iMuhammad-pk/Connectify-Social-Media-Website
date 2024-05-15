@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!---Style css -->
+    <link rel="stylesheet" href="/web_htmlcss/web_postpage.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="icon" type="image/png" href="/web_files/web_images/connectifylogo.jpg">
+    <title>Post Page</title>
+    <script src="/web_scripts/web_postpage.js"></script>
+  </head>
+  <body>
+ 
+    <nav> <!---start of the nav bar -------->
+      <div class="container">
+        <img src="/web_files/web_images/connectify_logomain.png" alt="" class="logo-img" />
+        <h2 class="logo">Connectify</h2>
+        <div class="search-bar">
+          <i class="fa fa-search"></i>
+          <input type="search" placeholder=" search for friends" id="s_id"/>
+        </div>
+        <div class="add-post">        
+          <label class="btn btn-primary" for="search_btn"><button name="search_btn" id="s_button"></button>Search</label>
+        </div>
+      </div>
+    </nav>
+  
+<div class="Search_FriendsBox" id="sfb">
+  <button class="close_search"> X </button>
+  <div class="Users"> 
+      <img class="User_img" src="/web_files/web_images/connectify_logomain.png">
+      <h1 class="Profile_Name"> Profile_Name</h1>
+      <p class="search_id"></p>
+      <button class="AddFriend" onclick="Add_FriendR(this)"> Add Friend</button>
+      <div class="Seperation_Line"></div>
+  </div>
+
+  
+</div>
+
+<script>
+      function Add_FriendR(button){
+          let pdiv=button.parentElement;
+          let user_id=pdiv.querySelector('.search_id').innerText;
+          console.log(user_id);
+          const add_friend=new XMLHttpRequest();
+          add_friend.open("GET","/add_request?user_id="+user_id);
+          add_friend.send();
+          add_friend.onload=function(){
+          }
+      }
+</script>
+
+
+<script>
+        window.addEventListener("load",function(){
+          var search_button=document.getElementById('s_button');
+          search_button.parentElement.addEventListener("click", async function(){  
+              let pdiv=document.getElementById('sfb');
+              let cdiv=pdiv.querySelector('.Users');
+              let search_input=document.getElementById('s_id').value;
+              let get_users=new XMLHttpRequest();
+              await new Promise((resolve,reject)=>{
+                      document.getElementById('sfb').innerHTML='';
+                      get_users.open("GET","/get_userf?user_name="+search_input);
+                      get_users.send();
+                      get_users.onload= function(){
+                        let convert_data=JSON.parse(get_users.responseText);
+                          for(let i=0;i<convert_data.length;i++){
+                            var new_user=cdiv.cloneNode(true);
+                            let user_id=convert_data[i].user_id;
+                            let user_name=convert_data[i].user_name;
+                            let user_pimg=convert_data[i].profile_pic;
+                            new_user.querySelector('.User_img').src='/web_files/Post_files/'+user_name+user_id+'/'+user_pimg;
+                            new_user.querySelector('.Profile_Name').textContent=user_name;
+                            new_user.querySelector('.search_id').textContent=user_id;
+                            document.getElementById('sfb').appendChild(new_user);
+                          }
+                      }
+                resolve();
+              })
+            document.getElementById('sfb').classList.add('active');
+            });
+      
+        });
+        document.getElementById('s_id').addEventListener('input',function(){
+        if(document.getElementById('s_id').value==""){
+         document.getElementById('sfb').classList.remove('active');}
+        })
+
+</script>
+
+    <!-------------MAIN BODY------------------------------>
+        <main>
+         
+          <div class="container main-container" id="mc">
+            <div class="main_left" id="ml">
+              <a href="" class="profile" id="p_id">
+              <div class="profile-picture" id="ppicture">
+                <img  name="my_profile_picture" class="myp" src="/web_files/web_images/connectify_logomain.png"/>
+              </div> 
+              <div class="profile-handle" id="phandle"><h4  id="my_profile_name" name="my_profile_name" class="mpn"> Test</h4>
+              </div> </a>
+           
+            <!------------Profile html ended------------>
+            <!----------------Start of the side bar ----------->
+              <aside><a href="#" onclick="window.location.href='/Homep'" class="menu-item">
+              <span><img src="/web_files/web_images/Logos/svg/house-door.svg"></span><h3 >Home</h3></a>
+              <a href="#" class="menu-item "> <span><img src="/web_files/web_images/Logos/svg/chat-left-dots.svg" alt=""></span><h3>Messeges</h3><small class="msg-counter">9+</small></a>    
+              <a href="#" class="menu-item"> <span><img src="/web_files/web_images/Logos/svg/palette.svg" alt=""></span><h3>Theme</h3></a>
+              <a href="#" class="menu-item "> <span><img src="/web_files/web_images/Logos/svg/gear.svg" alt=""></span><h3>Settings</h3></a>
+              <!--------------------Add the post button------------------------->
+              <!-- <label class="btn btn-primary btn-lg" for="Create-post">Create a post</label></aside>    -->
+        </div>
+     </div>
+  </main>
+      <!----- Post Page-------------------->
+      <div class="Post_Switch" id="p_switch" name="p_switch">
+        <div class="Home_Post_Img" id="post_img" name="post_img">
+              <img src="/web_files/web_images/connectify_logomain.png" class="post_profile_img" id="pp_img" name="pp_img">
+              <p class="post_id" id="pid" name="p_id"></p>
+              <h3 class="post_user" id="post_uid" name="post_uid"> User_Name</h3>
+              <h3 class="post_date" id="img_date" name="img_date">Posted on Insert_Date </h3>
+              <div class="Image_Only">
+              <img class="Post_Image" id="p_img" name="p_img">
+              </div>
+              <button onClick="Click_Like(this)"; class="like";><i class="far fa-thumbs-up"></i>  Like! </button>
+              <button class="commentbutton" id="com_id" name="comment_button"  onClick="Click_Comment(this)";> <i class="far fa-comment"></i> Comment</button>
+        </div>
+        <div class="Home_Post_Text" id="post_txt" name="post_txt">
+          <img src="/web_files/web_images/connectify_logomain.png" class="post_profile_img" id="pp_img" name="pp_img">
+              <p class="post_id" id="pid" name="p_id"></p>
+              <h3 class="post_user" id="post_uid" name="post_uid"> User_Name</h3>
+              <h3 class="post_date" id="img_date" name="img_date">Posted on Insert_Date </h3>
+              <h3 class="post_date" id="date" name="date"> </h3>
+              <p id="p_txt" name="p_txt" class="p_txt"> Enter text here yes this is nice</p >
+              <button onClick="Click_Like(this)"; class="like";><i class="far fa-thumbs-up"></i>  Like! </button>
+              <button class="commentbutton" id="com_id" name="comment_button"  onClick="Click_Comment(this)";> <i class="far fa-comment"></i> Comment</button>
+        </div>
+      </div>
+
+
+      <script>
+        function Click_Like(button){
+          let pdiv=button.parentElement;
+          let postid=pdiv.querySelector(".post_id").innerText;
+          pdiv.querySelector(".like").TextContent="Liked";
+          console.log("Post_ID is: "+postid);
+          const send_like=new XMLHttpRequest();
+          send_like.open("GET","/Like_Request?post_id="+postid);
+          send_like.send();
+          send_like.onload=function(){
+          }
+        }
+    </script>
+
+      <div class="Friends" id="f_s">
+          <h4></i>Friends List </h4>
+          <div class="Friends_List" id="f_l">
+                  <p class="friend_id"></p>
+                  <img class="Friend_img" src="/web_files/web_images/connectify_logomain.png">
+                  <div class="online_status"></div>
+                  <h1 class="Friend_Name"> Friend_Name</h1>
+                  <button class="Remove_Friend"   onClick="Removef(this)"; > Remove</button>
+          </div>
+          
+        </div>
+        <script>
+            let rfriend=new XMLHttpRequest();
+            function Removef(button){
+              let pdiv=button.parentElement;
+              let friend_id=pdiv.querySelector('.friend_id').innerText;
+              rfriend.open("GET","/remove_friend?friend_id="+friend_id);
+              rfriend.send();
+              rfriend.onload=function(){
+              }
+            }
+        </script>
+
+
+      <div class="Comment_Box" id="C_B">
+                <p class="cb_post_id"></p>
+                <h1 class="title"> Comments</h1>
+                <button class="icon-close" id="ec" name="e_c"> X</button>
+                <div class="Type_Box">
+                <input type="text" class="Comment_Input" id="cinput" name="comment"> </div>
+                <button class="Submit_Comment" onClick="Insert_Comment(this)";> Submit</button>
+              <div class="Comment_Show">
+                    <img class="c_img">
+                    <h1 class="c_name"></h1>
+                    <h2 class="c_date"></h2>
+                    <p class="c_text"></p>
+                    <p class="comment_id" id="cid" name=""></p>
+              </div>
+      </div>
+
+
+
+
+
+      <script>
+          function Click_Comment(button){
+            var comment_box=document.getElementById('C_B');
+            comment_box.classList.remove('hidden');
+            let pdiv=button.parentElement;
+            let postid=pdiv.querySelector(".post_id").innerText;
+            let comments=comment_box.querySelector('.Comment_Show');
+            comment_box.querySelector(".cb_post_id").textContent=postid;
+            console.log("Post_ID is: "+postid);
+            const send_comment=new XMLHttpRequest();
+            send_comment.open("GET","/get_comments?post_id="+postid);
+            send_comment.send();
+            send_comment.onload=function(){
+              let convert_data=JSON.parse(send_comment.responseText);
+              for(let  i=0;i<convert_data.length;i++){
+                let post_id=convert_data[i].post_id;
+                let comment_id=convert_data[i].comment_id;
+                let user_id=convert_data[i].user_id;
+                let user_name=convert_data[i].user_name;
+                let comment_text=convert_data[i].comment_text;
+                let comment_date=convert_data[i].comment_date;
+                let profile_pic=convert_data[i].profile_pic;
+                console.log(post_id+user_id+comment_text+comment_date)
+                var comment_show=comment_box.querySelector('.Comment_Show').cloneNode(true);
+                comment_show.querySelector('.c_name').textContent=user_name;
+                comment_show.querySelector('.c_date').textContent=comment_date;
+                comment_show.querySelector('.c_date').textContent=comment_date;
+                comment_show.querySelector('.c_text').textContent=comment_text;
+                comment_show.querySelector('.comment_id').textContent=comment_id;
+                comment_show.querySelector('.c_img').src='/web_files/Post_files/'+user_name+user_id+'/'+profile_pic;
+                comment_show.style.display = "flex";
+                comment_box.appendChild(comment_show);
+              }
+              comment_box.classList.add('active');
+          }
+        }
+          
+          function Insert_Comment(button){
+            let pdiv=button.parentElement;
+            let postid=pdiv.querySelector(".cb_post_id").innerText;
+            let Type_Box=pdiv.querySelector(".Type_Box");
+            let comment_text=Type_Box.querySelector(".Comment_Input").value;
+            const insert_comment=new XMLHttpRequest();
+            insert_comment.open("POST","/submit_comment?post_id="+postid+"&comment_text="+comment_text);
+            insert_comment.send();
+            insert_comment.onload=function(){
+            }
+          }
+      </script>
+
+
+
+      <script>
+        document.addEventListener("DOMContentLoaded",function(){
+          var close_button=document.getElementById('ec');
+          var comment_b=document.querySelector(".Comment_Box"); 
+          close_button.addEventListener("click",function(){
+            comment_b.classList.remove('active');
+            var comment_shows = comment_b.querySelectorAll('.Comment_Show');
+            for(let i=1;i<comment_shows.length;i++){
+              comment_shows[i].parentNode.removeChild(comment_shows[i]);
+            }
+            comment_b.classList.add("hidden");
+            })
+        });
+      </script>
+    <div class="Add_Box">
+        <h1 class="collab_name"> Collaboration with  TrioKart</h1>
+        <img class="collab_img" src="/web_files/web_images/add_triokart.jpg">
+
+
+
+    </div>
+
+
+
+
+
+
+    </body>
+</html>

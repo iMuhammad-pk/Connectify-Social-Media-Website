@@ -1,0 +1,506 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500&display=swap");
+body{
+    background-color: hsl(252, 30%, 95%);
+
+    .Edit_Button{
+        text-decoration: none;
+        position: absolute;
+        font-family: 'Poppins';
+        font-size: 0.9rem;
+        color:white;
+        font-weight: 500;
+        bottom: 40%;
+        left: 15%;
+        background-color: hsl(252, 100%, 64%);
+        border-radius: 25px;
+        border: 0px;
+        padding: 0.6rem 2rem;
+    }
+    .Edit_Button:hover{
+        position: absolute;
+        font-family: 'Poppins';
+        font-size: 0.9rem;
+        font-weight: 500;
+        bottom: 40%;
+        left: 15%;
+        opacity:0.5;
+        background-color: hsl(252, 100%, 56%);
+        border-radius: 25px;
+        border: 0px;
+        padding: 0.6rem 2rem;
+        cursor:pointer;
+        
+    }
+
+    .Header_Posts{
+        position: absolute;
+        font-family: 'Poppins';
+        top:18%;
+        left: 40%;
+    }
+
+
+ 
+}
+
+.navbar{
+    font-family: 'Poppins';
+    background-color: hsl(252, 30%, 95%);
+    width: 100%;
+    height:250px;
+    margin: auto;
+    position:inherit;
+    img{
+      width:8%;
+      height:16%;
+      border-radius: 50px;
+      top:50%;
+      position: absolute;
+      top:5%;
+      left: 16%;
+    }
+    h1{ 
+        position: absolute;
+        font-family: 'Poppins';
+        top: 5%;
+        left: 25%;
+        font-size: 20px;
+        font-weight: 600;
+    }
+    p{  
+        border-radius: 10px;
+        padding: 0.25%;
+        background-color: hwb(252 84% 1%);;
+        position: absolute;
+        font-family: 'Poppins';
+        top: 10%;
+        left: 28%;
+        font-size: 14px;
+        font-weight: 500;
+    }
+    button{
+            font-family: 'Poppins';
+            font-size: 0.9rem;
+            font-weight: 500;
+            position: relative;
+            top: 15%;
+            left: 75%;
+            transition: all 300ms;
+            background-color: hsl(252, 100%, 90%);
+            border-radius: 25px;
+            border: 0px;
+            padding: 0.6rem 2rem;
+
+    }
+    button:hover{
+        font-family: 'Poppins';
+        font-size: 0.9rem;
+        font-weight: 500;
+        position: relative;
+        cursor:pointer;
+        top: 15%;
+        left: 75%;
+        opacity: 0.8;
+        background-color: hsl(252, 100%, 90%);
+        border-radius: 25px;
+        border: 0px;
+        padding: 0.6rem 2rem;
+    }
+    .C_logo{
+        width:8%;
+        height:16%;
+        border-radius: 50px;
+        top:50%;
+        position: absolute;
+        top:0%;
+        left: 0%;
+
+
+
+    }
+}
+.side-profile{
+    /* border: 0px solid black; */
+    border-radius: 25px;
+    position: absolute;
+    background-color: hsl(252, 30%, 90%);;
+    width: 25%;
+    height: 20%;
+    left:8%;
+    top: 30%;
+    font-family: 'Poppins';
+    box-shadow: 0px 3px 10px 2px rgba(0, 0, 0);
+    h1{
+        position: absolute;
+        text-align: center;
+
+        left:35%;
+        font-size: 20px ;
+
+    }
+    p{  
+        position: absolute;
+        text-align: center;
+        margin-bottom: 10%;
+        margin-top: 15%;
+        margin-left: 5%;
+        font-size: 17px;
+        font-weight: 550;
+    }
+}
+
+.Post_Switch{
+    display: none;
+    position: relative;
+    /* background-color: hsl(252, 30%, 95%); */
+    background-color: hsl(252, 30%, 95%);
+    width: 800px;
+    height: auto;
+    left: 520px;
+    bottom: 42px;
+    margin-bottom: 50px;
+.Home_Post_Img{
+    display: none;
+    position: relative;
+    background-color: white;
+    border-radius: 25px;
+    box-shadow: 0px 3px 10px 1px rgba(0, 0, 0);
+    width:100%;
+    height: 600px;
+    right:0%;
+    bottom:0%;
+    margin-bottom:10px;
+    .Post_Image{
+        width: 45%;
+        height:75%;
+        position: absolute;
+        right: 25%;
+        top:10%;
+    }
+    
+
+    button{
+        font-family: 'Poppins';
+        font-weight: 550;
+        text-align: center;
+        position: relative;
+        color:white;
+        background-color: hsl(252, 60%, 67%);
+        width:20%;
+        height: 8%;
+        top:90%;
+        left: 25%;
+        border-radius: 25px;
+        padding: 0.6rem 1rem;
+        margin-left: 5%;
+    }
+    .post_date{
+        color:darkgray;
+        font-size: 12px;
+        position: absolute;
+        font-family: 'Poppins';
+        top:0%;
+        left: 5%;
+    }
+    .post_id{
+        display: none;
+    }
+
+}
+
+.Home_Post_Text{
+    display: none;
+    position: relative;
+    background-color: white;
+    border-radius: 25px;
+    box-shadow: 0px 3px 10px 1px rgba(0, 0, 0);
+    width:100%;
+    height: 250px;
+    right:0%;
+    bottom:55%;
+    margin-bottom: 10px;
+    p{
+        position: absolute;
+        font-family: 'Poppins';
+        font-size: 25px;
+        left: 3%;
+        top: 5%;
+    }
+    button{
+        font-family: 'Poppins';
+        font-weight: 500;
+        font-size: 11px;
+        text-align: center;
+        position: relative;
+        color:white;
+        background-color: hsl(252, 60%, 67%);
+        width:25%;
+        height: 15%;
+        top:83%;
+        left: 5%;
+        border-radius:10px;
+        margin-left: 15%;
+        padding:auto;
+    }
+    .post_date{
+        color:darkgray;
+        font-size: 12px;
+        position: absolute;
+        font-family: 'Poppins';
+        top:0%;
+        left: 5%;
+    }
+    .post_id{
+        display: none;
+    }
+}
+
+
+}
+
+.Comment_Box{
+    opacity: 1;
+    display:flex;
+    visibility: hidden;
+    transition: visibility 0.2s,opacity 0.2s ease-out;
+    flex-direction: column;
+    position: absolute;
+    z-index: 99999;;
+    background-color: rgba(255, 255, 255, 0.897);
+    /* background-color: hsl(0, 100%, 97%); */
+    border-style: solid;
+    border-width: 2px;
+    width: 500px;
+    min-height:500px;
+    top:25%;
+    right: 21%;
+    bottom: 50%;
+    border-radius: 25px;
+    overflow: auto;
+    scrollbar-width:none;
+    .title{
+      position: absolute;
+      top: 1%;
+      right: 36%;
+      font-family: 'Poppins';
+      text-align: center;
+      margin-bottom: 35px;
+    }
+    .icon-close {
+      top: 0%;
+      position: absolute;
+      background-color: #1198ff;
+      right: 0%;
+      width: 35px;
+      height: 35px;
+      color: #fff;
+      justify-content: center;
+      align-items: center;
+      border-bottom-left-radius: 20px;
+      border-top-right-radius: 20px;
+      cursor: pointer;
+    }
+    .Type_Box{
+      position: absolute;
+      top: 15%;
+      width: 75%;
+      height: 43px;
+      right:24%;
+      border-radius: 25px;
+      background-color: hsl(224, 100%, 88%);
+      .Comment_Input{
+        border-width: 0px;
+        position: absolute;
+        border-radius: 25px;
+        background-color: transparent;
+        box-shadow: 2px 5px 5px rgba(0, 0, 0, 0.1);
+        font-family: 'Poppins';
+        font-size: 22px;
+        width: 98%;
+        height: 90%;
+        left: 0%;
+        top: 0%;
+        padding-left: 1%;
+      }
+    }
+  
+  
+  .Submit_Comment{
+    text-align: center;
+    font-family: 'Poppins';
+    border-radius: 25px;
+    background-color: hsl(252, 60%, 67%);
+    color: white;
+    font-size: 20px;
+    padding-left: 2%;
+    padding-right: 2%;
+    position: absolute;
+    right: 2%;
+    top: 15%;
+    height: 45px;
+     margin-bottom: 35px;
+  }
+  .Comment_Show{
+    display: none;
+    background-color: white;
+    position: relative;
+    width: 98%;
+    min-height: 150px;
+    top: 30%;
+    left: 1%;
+    border-radius: 25px;
+    box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.1);
+    margin-bottom: 25px;
+    overflow:hidden;
+    .c_img{
+      position: absolute;
+      width: 55px;
+      height: 55px;
+      top:0%;
+      left: 0%;
+      border-radius: 25px;
+    }
+    .c_name{
+      font-family: 'Poppins';
+      position: absolute;
+      font-size: 11px;
+      top: 9%;
+      left: 12%;
+    }
+    .c_date{
+      color: lightgray;
+      font-family: 'Poppins';
+      position: absolute;
+      font-size: 10px;
+      top:16%;
+      left: 12%;
+    }
+    .c_text{
+      font-family: 'Poppins';
+      position: absolute;
+      font-size: 23px;
+      top: 45%;
+      left: 3%;
+      overflow: auto;
+      text-overflow: ellipsis;
+      word-wrap: break-word;
+    }
+  
+    .comment_id{
+      display: none;
+    }
+  }
+  .cb_post_id{
+    display: none;
+  }
+  }
+  .Comment_Box.hidden {
+    opacity: 0;
+    display: block;
+    visibility: hidden;
+  }
+
+
+
+.Request_Box{
+  display:block;
+  overflow: auto;
+  position: absolute;
+  background-color: rgba(255, 255, 255, 0.897);
+  box-shadow: 0px 3px 10px 2px rgba(0, 0, 0);
+  width: 350px;
+  height: 260px;
+  top: 475px;
+  left: 100px;
+  border-radius: 25px;
+  .R_title{
+    position: absolute;
+    font-family: 'Poppins';
+    font-size: 20px;
+    text-align: center;
+    top: 1%;  
+    left: 25%;
+  }
+  .User_request{
+      display: flex;
+      opacity: 0;  
+      pointer-events: auto;
+      transition:opacity 0.3s ease-in-out,margin-top 0.16s ease-in-out;
+      position: relative;
+      border-radius: 10px;
+      background-color: rgba(228, 231, 231, 0.979);
+      box-shadow: 0px 1px 5px 1px rgba(0, 0, 0);
+      width: 70%;
+      height: 68%;
+      top:0%;
+      left: 15%;
+      margin-top: 10px;
+      margin-bottom: 15px;
+    .sender_img{
+      position: absolute;
+      border-radius: 50px;
+      width: 65px;
+      height: 65px;
+      top: 0%;
+      left: 0%;
+    }
+    .sender_name{
+      position: absolute;
+        font-family: 'Poppins';
+        font-size: 15px;
+        top:15%;
+        left: 35%;
+    }
+
+    .Accept_F{
+      border-radius: 25px;
+      background-color: hsl(252, 100%, 64%);
+      color: white;
+      position: absolute;
+      font-family: 'Poppins';
+      cursor:pointer;
+      width: 40%;
+      height: 20%;
+      bottom: 2%;
+      left: 3%;
+    }
+
+    .Reject_R{
+      border-radius: 25px;
+      background-color: hsl(252, 100%, 64%);
+      color: white;
+      position: absolute;
+      font-family: 'Poppins';
+      cursor:pointer;
+      width: 40%;
+      height: 20%;
+      bottom: 2%;
+      right: 3%;
+    }
+    .r_id{
+      display: none;
+    }
+  }
+  .User_request.hidden{
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    top:0%;
+  }
+  .User_request.shift{
+      position: absolute;
+      margin-top: 0px;
+  }
+
+  .no_pending{
+    position: absolute;
+    top:25%;
+    left: 17%;
+    font-family: 'Poppins';
+    font-size: 20px;
+    text-align: center;
+  }
+
+}
+
+

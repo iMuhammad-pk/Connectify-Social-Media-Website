@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/web_htmlcss/web_homepage.css">
+  <link rel="stylesheet" href="/web_files/web_fonts/fontawesome-free-6.3.0-web/css/all.css">
+  <link rel="icon" type="image/png" href="/web_files/web_images/connectifylogo.jpg">
+  <title>Account Profile</title>
+</head>
+<body>
+<script src="/web_scripts/web_homepage.js"></script>
+<div class="navbar" id="navbar">
+      <img src="/web_files/web_images/connectify_logomain.png" class="C_logo" id="C_logo">
+      <img src="/Resources/Images/profile-pic.jpg.jpg" id="profile_picture" name="profile_picture">
+      <h1 id="username" name="username"></h1>
+      <button  onclick="window.location.href='/Post_Page'"><i class="fas fa-arrow-right"></i> Post Page </button>
+      <button  onclick="window.location.href='/Log_out'"><i class="fas fa-person-walking-arrow-loop-left"></i> Log out </button>
+</div>
+<div class="side-profile" id="side-profile">
+      <h1> About Me!</h1>
+      <p id="introduction" name="introduction"></p>
+</div>
+<h1 class="Header_Posts"> Your Posts</h1>
+<button class="Edit_Button" onclick="window.location.href='/Profile_Edit'"><i class="fas fa-user"></i> Edit Profile!</button>
+<div class="Post_Switch" id="p_switch" name="p_switch">
+<div class="Home_Post_Img" id="post_img" name="post_img">
+      <h1 class="post_id" id="pid" name="pid"> Insert_PostID</h1>
+      <h3 class="post_date" id="img_date" name="img_date">Posted on Insert_Date </h3>
+      <div class="Image_Only">
+      <img class="Post_Image" id="p_img" name="p_img">
+      </div>
+      <button onClick="Click_Like(this)"; class="like";><i class="far fa-thumbs-up"></i>  Like! </button>
+      <button class="commentbutton" id="com_id" name="comment_button"  onClick="Click_Comment(this)";> <i class="far fa-comment"></i> Comment</button>
+</div>
+<div class="Home_Post_Text" id="post_txt" name="post_txt">
+      <h1 class="post_id" id="pid" name="pid"> Insert_PostID</h1>
+      <h3 class="post_date" id="date" name="date"> </h3>
+      <p id="p_txt" name="p_txt" class="p_txt"> Enter text here yes this is nice</p >
+      <button onClick="Click_Like(this)"; class="like";><i class="far fa-thumbs-up"></i>  Like! </button>
+      <button class="commentbutton" id="com_id" name="comment_button"  onClick="Click_Comment(this)";> <i class="far fa-comment"></i> Comment</button>
+</div>
+</div>
+
+<div class="Comment_Box" id="C_B">
+      <p class="cb_post_id"></p>
+      <h1 class="title"> Comments</h1>
+      <button class="icon-close" id="ec" name="e_c"> X</button>
+      <div class="Type_Box">
+      <input type="text" class="Comment_Input" id="cinput" name="comment"> </div>
+      <button class="Submit_Comment" onClick="Insert_Comment(this)";> Submit</button>
+    <div class="Comment_Show">
+          <img class="c_img">
+          <h1 class="c_name"></h1>
+          <h2 class="c_date"></h2>
+          <p class="c_text"></p>
+          <p class="comment_id" id="cid" name=""></p>
+    </div>
+</div>
+
+<script>
+      function Click_Like(button){
+        let pdiv=button.parentElement;
+        let postid=pdiv.querySelector(".post_id").innerText;
+        console.log("Post_ID is: "+postid);
+        const send_like=new XMLHttpRequest();
+        send_like.open("GET","/Like_Request?post_id="+postid);
+        send_like.send();
+        send_like.onload=function(){
+        }
+      }
+</script>
+
+<script>
+      function Click_Comment(button){
+        var comment_box=document.getElementById('C_B');
+        comment_box.style.visibility="visible";
+        let pdiv=button.parentElement;
+        let postid=pdiv.querySelector(".post_id").innerText;
+        comment_box.querySelector(".cb_post_id").textContent=postid;
+        console.log("Post_ID is: "+postid);
+        const send_comment=new XMLHttpRequest();
+        send_comment.open("GET","/get_comments?post_id="+postid);
+        send_comment.send();
+        send_comment.onload=function(){
+          let convert_data=JSON.parse(send_comment.responseText);
+          for(let  i=0;i<convert_data.length;i++){
+            let post_id=convert_data[i].post_id;
+            let comment_id=convert_data[i].comment_id;
+            let user_id=convert_data[i].user_id;
+            let user_name=convert_data[i].user_name;
+            let comment_text=convert_data[i].comment_text;
+            let comment_date=convert_data[i].comment_date;
+            let profile_pic=convert_data[i].profile_pic;
+            console.log(post_id+user_id+comment_text+comment_date)
+            var comment_show=comment_box.querySelector('.Comment_Show').cloneNode(true);
+            comment_show.querySelector('.c_name').textContent=user_name;
+            comment_show.querySelector('.c_date').textContent=comment_date;
+            comment_show.querySelector('.c_date').textContent=comment_date;
+            comment_show.querySelector('.c_text').textContent=comment_text;
+            comment_show.querySelector('.comment_id').textContent=comment_id;
+            comment_show.querySelector('.c_img').src='/web_files/Post_files/'+user_name+user_id+'/'+profile_pic;
+            comment_show.style.display = "flex";
+            comment_box.appendChild(comment_show);
+          }
+      }
+    }
+      
+      function Insert_Comment(button){
+        let pdiv=button.parentElement;
+        let postid=pdiv.querySelector(".cb_post_id").innerText;
+        let Type_Box=pdiv.querySelector(".Type_Box");
+        let comment_text=Type_Box.querySelector(".Comment_Input").value;
+        const insert_comment=new XMLHttpRequest();
+        insert_comment.open("POST","/submit_comment?post_id="+postid+"&comment_text="+comment_text);
+        insert_comment.send();
+        insert_comment.onload=function(){
+        }
+      }
+</script>
+
+<script>
+      document.addEventListener("DOMContentLoaded",function(){
+        var close_button=document.getElementById('ec');
+        var comment_b=document.querySelector(".Comment_Box");  
+        close_button.addEventListener("click",function(){
+          comment_b.classList.add("hidden");
+  
+          })
+      });
+</script>
+
+
+
+<div class="Request_Box" id="R_b">
+    <h1 class="R_title">Pending Requests</h1>
+    <p class="no_pending"> No pending Requests!</p>
+      <div class="User_request" id="U_r">
+            <img class="sender_img" src="/web_files/web_images/connectify_logomain.png">
+            <p class="r_id"> 12</p>
+         
+            <h2 class="sender_name"> Enter_Name </h2>
+            <button class="Accept_F" onclick="Acceptec_func(this)" > Accept </button>
+            <button class="Reject_R" onclick="Rejected_func(this)"> Reject </button>
+      </div>
+      
+</div>
+
+
+<script>
+      const reject_f=new XMLHttpRequest();
+      const accept_f=new XMLHttpRequest();
+      function Rejected_func(button){
+      let pdiv=button.parentElement;
+      let ppdive=pdiv.parentElement;
+      let r_id=pdiv.querySelector('.r_id').innerText;
+      reject_f.open("GET","/reject_f?user_id="+r_id);
+      reject_f.send();
+            pdiv.classList.add('hidden');
+            void pdiv.offsetWidth;
+            let all_hidden=true;
+            ur_divs=ppdive.querySelectorAll('.User_request');
+            for(let i=0;i<ur_divs.length;i++){
+                  if (!ur_divs[i].classList.contains('hidden')) {
+                        setTimeout(function(){
+                        ur_divs[i].classList.add('shift');
+                        },10)
+                            void ur_divs[i].offsetWidth;   
+                        break;
+                  }
+            }
+            for(let i=0;i<ur_divs.length;i++){
+                  if(!ur_divs[i].classList.contains('hidden')){
+                        all_hidden=false;
+                  }
+            }
+                  if(all_hidden==true){
+                        ppdive.querySelector('.no_pending').textContent='No pending Requests!';
+
+                  }
+             reject_f.onload=function(){}   
+      
+      }
+
+      function Acceptec_func(button){
+      let pdiv=button.parentElement;
+      let ppdive=pdiv.parentElement;
+      let r_id=pdiv.querySelector('.r_id').innerText;
+      accept_f.open("GET","/add_friend?user_id="+r_id);
+      accept_f.send();
+            pdiv.classList.add('hidden');
+            void pdiv.offsetWidth;
+            let all_hidden=true;
+            ur_divs=ppdive.querySelectorAll('.User_request');
+            for(let i=0;i<ur_divs.length;i++){
+                  if (!ur_divs[i].classList.contains('hidden')) {
+                        setTimeout(function(){
+                        ur_divs[i].classList.add('shift');
+                        },10)
+                            void ur_divs[i].offsetWidth;   
+                        break;}
+            }
+            for(let i=0;i<ur_divs.length;i++){
+                  if(!ur_divs[i].classList.contains('hidden')){
+                        all_hidden=false;
+                  }
+            }
+            if(all_hidden==true){
+                  ppdive.querySelector('.no_pending').textContent='No pending Requests!';
+
+            }
+            accept_f.onload=function(){}   
+      }
+
+
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+</body>
+
+</html>     

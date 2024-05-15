@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!---Style css -->
+    <link rel="stylesheet" href="./web_postpage.css" />
+    <link rel="stylesheet" href="fontawesome-free-6.3.0-web/css/all.css">
+    <link rel="icon" type="image/png" href="./logo.png">
+    <title>Post Page</title>
+    <script src="/web_scripts/web_postpage.js"></script>
+  </head>
+  <body>
+ 
+    <nav> <!---start of the nav bar -------->
+      <div class="container">
+        <img src="./logo.png" alt="" class="logo-img" />
+        <h2 class="logo">Connectify</h2>
+        <div class="search-bar">
+          <i class="fa fa-search"></i>
+          <input type="search" placeholder=" search for friends"/>
+        </div>
+        <div class="add-post">
+          <label class="btn btn-primary" for="search_btn">Search</label>
+        </div>
+      </div>
+    </nav>
+    <!-------------MAIN BODY------------------------------>
+        <main>
+         
+          <div class="container main-container" id="mc">
+            <div class="main_left" id="ml">
+              <a href="" class="profile" id="p_id">
+              <div class="profile-picture" id="ppicture">
+                <img  name="my_profile_picture" class="myp"/>
+              </div> 
+              <div class="profile-handle" id="phandle"><h4  id="my_profile_name" name="my_profile_name" class="mpn"></h4>
+              </div> </a>
+           
+            <!------------Profile html ended------------>
+            <!----------------Start of the side bar ----------->
+              <aside><a href="#" class="menu-item active">
+              <span><img src="/web_files/web_images/Logos/svg/house-door.svg" alt=""></span><h3>Home</h3></a>
+              <a href="#" class="menu-item "> <span><img src="/web_files/web_images/Logos/svg/chat-left-dots.svg" alt=""></span><h3>Messeges</h3><small class="msg-counter">9+</small></a>    
+              <a href="#" class="menu-item"> <span><img src="/web_files/web_images/Logos/svg/palette.svg" alt=""></span><h3>Theme</h3></a>
+              <a href="#" class="menu-item "> <span><img src="/web_files/web_images/Logos/svg/gear.svg" alt=""></span><h3>Settings</h3></a>
+              <!--------------------Add the post button------------------------->
+              <!-- <label class="btn btn-primary btn-lg" for="Create-post">Create a post</label></aside>    -->
+          </div>
+       
+  
+      <!--------------- Post Page-------------------->
+      <div class="middle-main">
+      <div class="Post_Switch" id="p_switch" name="p_switch">
+        <div class="Home_Post_Img" id="post_img" name="post_img">
+              <img src="/web_files/web_images/connectify_logomain.png" class="post_profile_img" id="pp_img" name="pp_img">
+              <h3 class="post_user" id="post_uid" name="post_uid"> User_Name</h3>
+              <h3 class="post_date" id="img_date" name="img_date">Posted on Insert_Date </h3>
+              <div class="Image_Only">
+              <img class="Post_Image" id="p_img" name="p_img">
+              </div>
+              <button><i class="far fa-thumbs-up"></i>  Like! </button>
+              <button> <i class="far fa-comment"></i> Comment</button>
+              <button> <i class="far fa-share-square"></i> Share</button>
+        </div>
+
+        <div class="Home_Post_Text" id="post_txt" name="post_txt">
+          <img src="/web_files/web_images/connectify_logomain.png" class="post_profile_img" id="pp_img" name="pp_img">
+              <h3 class="post_user" id="post_uid" name="post_uid"> User_Name</h3>
+              <h3 class="post_date" id="img_date" name="img_date">Posted on Insert_Date </h3>
+              <h3 class="post_date" id="date" name="date"> </h3>
+              <p id="p_txt" name="p_txt" class="p_txt"> Enter text here yes this is nice</p >
+              <button><i class="far fa-thumbs-up"></i>  Like! </button>
+              <button> <i class="far fa-comment"></i> Comment</button>
+              <button> <i class="far fa-share-square"></i> Share</button>
+        </div>
+      </div>
+    </div>
+
+
+          <!------------Right side of the screen-------->
+          <div class="main-right">
+              <!-----------Friend lists--------->
+
+              <div class="Friends">
+                <div class="Friends-top">
+                  <h4>Friends <i class="fa fa-person"></i></h4>
+                </div>
+              
+                <!-------Search bar -------->
+              
+                <div class="Friend-search-bar">
+                  <i class="fa fa-search"></i>
+                  <input type="search" placeholder="Search Friends" id="Friend-search">
+                </div>
+              
+                <div class="Friends-categories">
+                  <h6 class="active">Primary</h6>
+                  <div class="Friend-List"></div>
+                  <h6 class="Friend-request"> Friend Requests(2)</h6>
+                  <div class="pending-Friend-Request"></div>
+                </div>
+              </div>
+              
+
+            
+          </div>
+
+
+        </div>
+    </main>
+
+
+
+  
+  </body>
+
+</html>

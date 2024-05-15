@@ -1,0 +1,229 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  font-family: "Poppins", "sans-serif";
+  box-sizing: border-box;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: url(/web_files/web_images/4.jpg) no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 20px 100px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 99;
+}
+
+.logo {
+  font-size: 2rem;
+  color: #f3f3f3;
+  user-select: none;
+  padding-left: 50px;
+}
+.navigation a {
+  position: relative;
+  font-size: 1.1rem;
+  color: #f3f3f3;
+  text-decoration: none;
+  font-weight: 500;
+  margin-left: 30px;
+}
+
+.navigation .Btnlogin-popup {
+  width: 130px;
+  height: 40px;
+  background: transparent;
+  outline: none;
+  border: 2px solid #fff;
+  cursor: pointer;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  margin-left: 20px;
+  transition: 0.5s;
+  color: #f3f3f3;
+}
+
+.navigation .Btnlogin-popup:hover {
+  background: #fff;
+  color: #162938;
+}
+
+.navigation a::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 3px;
+  background: #fff;
+  border-radius: 5px;
+  left: 0;
+  bottom: -6px;
+  transform: scale(0);
+  transition: transform 0.5s;
+  transform-origin: right;
+}
+
+.navigation a:hover::after {
+  transform: scale(1);
+  transform-origin: left;
+}
+
+.wrapper {
+  width: 400px;
+  height: 440px;
+  background-color: rgba(255, 255, 255, 0.075);
+  position: relative;
+  border: 2px solid rgba(255, 255, 255, 0.5);
+  border-radius: 20px;
+  backdrop-filter: blur(20px);
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  overflow: hidden;
+  transform: scale(0);
+  transition: transform 0.5s ease, height 0.3s ease;
+}
+.wrapper .icon-close {
+  top: 0;
+  position: absolute;
+  background-color: #162938;
+  right: 0;
+  width: 45px;
+  height: 45px;
+  color: #fff;
+  justify-content: center;
+  display: flex;
+  align-items: center;
+  border-bottom-left-radius: 20px;
+  cursor: pointer;
+  z-index: 1;
+}
+.wrapper .form-box {
+  width: 100%;
+  padding: 40px;
+}
+
+/* javascript modules settings*/
+
+.wrapper.active {
+  height: 530px;
+}
+.wrapper.active-popup {
+  transform: scale(1);
+}
+
+.wrapper .form-box.Login {
+  transition: transform 0.18s ease;
+  transform: translateX(0);
+}
+
+.wrapper.active .form-box.Login {
+  transition: none;
+  transform: translateX(-400px);
+}
+
+.wrapper .form-box.Registeration {
+  position: absolute;
+  transition: none;
+  transform: translateX(400px);
+}
+
+.wrapper.active .form-box.Registeration {
+  transition: transform 0.18s ease;
+  transform: translateX(0);
+}
+
+.form-box h2 {
+  font-size: 1.5rem;
+  text-align: center;
+  color: #162938;
+}
+.input-box {
+  position: relative;
+  width: 100%;
+  height: 50px;
+  border-bottom: 2px solid #162938;
+  margin: 30px 0;
+}
+.input-box label {
+  position: absolute;
+  top: 50%;
+  left: 5px;
+  transform: translateY(-50%);
+  font-size: 1rem;
+  color: #162938;
+  font-weight: 500;
+  pointer-events: none;
+  transition: 0.5s;
+}
+.input-box input:focus ~ label,
+.input-box input:valid ~ label {
+  top: -5px;
+}
+
+.input-box input {
+  width: 100%;
+  height: 100%;
+  background: transparent;
+  border: none;
+  outline: none;
+  font-size: 1rem;
+  color: #162938;
+  font-weight: 600;
+  padding: 0 35px 0 5px;
+}
+
+.input-box .icon {
+  position: absolute;
+  right: 8px;
+  font-size: 1.2rem;
+  color: #162938;
+  line-height: 60px;
+}
+.btn {
+  width: 100%;
+  height: 40px;
+  background: #162938;
+  border: none;
+  outline: none;
+  color: #fff;
+  font-weight: 500;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.login-register {
+  font-size: 0.9rem;
+  color: #162938;
+  justify-content: center;
+  display: flex;
+  text-align: center;
+  font-weight: 500;
+  margin: 25px 0 10px;
+}
+.login-register a {
+  text-decoration: none;
+  color: #162938;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.login-register p a:hover {
+  text-decoration: underline;
+}
