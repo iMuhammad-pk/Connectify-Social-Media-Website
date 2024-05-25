@@ -26,4 +26,7 @@ These are node modules which you can get via npm install
 for example npm install (express)
 
 This project is tailored for advanced developers with a deep understanding of server networking and proficiency in JavaScript/Node.js.
+![image](https://github.com/iMuhammad-pk/Connectify-Social-Media-Website/assets/93125988/6e4747f0-4b21-4b61-8555-084964bc730e)
+
+
 
